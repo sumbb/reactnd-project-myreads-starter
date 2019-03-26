@@ -6,6 +6,7 @@ const bookshelfs = ['currentlyReading', 'wantToRead', 'read']
 class ListBooks extends Component {
 
     render() {
+        const {books, changeShelf } = this.props   
         return <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
@@ -14,7 +15,7 @@ class ListBooks extends Component {
           <div>
             {
               bookshelfs.map((bookshelf)=> {
-                return <BookShelf key={bookshelf} shelfName={bookshelf} books={this.props.books}/>
+                return <BookShelf key={bookshelf} shelfName={bookshelf} books={books} changeShelf={changeShelf}/>
               })
             }
           </div>

@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 
-class BookGrid extends Component {
+class BookGrid extends Component { 
     render() {
-        const { showBooks } = this.props
+        const { showBooks, changeShelf } = this.props
         return <div className="bookshelf-books">
         <ol className="books-grid">
           {
@@ -12,7 +12,8 @@ class BookGrid extends Component {
                   <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
                     <div className="book-shelf-changer">
-                      <select>
+                      <select value={book.shelf}
+                              onChange={(event) => changeShelf(book, event.target.value)}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
