@@ -13,7 +13,7 @@ class ListBooks extends Component {
           <div>
             {
               bookshelfs.map((bookshelf)=> {
-                return <BookShelf key={bookshelf} shelfName={bookshelf}/>
+                return <BookShelf key={bookshelf} shelfName={bookshelf} books={this.props.books}/>
               })
             }
           </div>
