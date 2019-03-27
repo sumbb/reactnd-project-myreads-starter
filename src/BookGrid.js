@@ -3,14 +3,15 @@ import React, {Component} from 'react'
 class BookGrid extends Component { 
     render() {
         const { showBooks, changeShelf } = this.props
-        return <div className="bookshelf-books">
-        <ol className="books-grid">
+        return <ol className="books-grid">
           {
               showBooks.map((book) => {
                 return <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+                    <div className="book-cover" style={
+                      book.imageLinks ? { width: 128, height: 193, backgroundImage:  `url(${book.imageLinks.smallThumbnail})`} :
+                      { width: 128, height: 193, backgroundImage:  `url("")`}}></div>
                     <div className="book-shelf-changer">
                       <select value={book.shelf}
                               onChange={(event) => changeShelf(book, event.target.value)}>
@@ -30,7 +31,7 @@ class BookGrid extends Component {
           }
           
         </ol>
-      </div>
+     
     }
 }
 

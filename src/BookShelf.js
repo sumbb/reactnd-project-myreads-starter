@@ -20,7 +20,9 @@ class BookShelf extends Component {
         const showBooks = books.filter((book) => (book.shelf === shelfName))
         return <div className="bookshelf">
         <h2 className="bookshelf-title">{this.getTitle(this.props.shelfName)}</h2>
-        <BookGrid showBooks={showBooks} changeShelf={changeShelf}/>
+            <div className="bookshelf-books">
+                <BookGrid showBooks={showBooks} changeShelf={changeShelf}/>
+            </div>
       </div>
     }
 }
