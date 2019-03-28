@@ -24,14 +24,22 @@ class BooksApp extends React.Component {
 
     })
   }
-  searchBooks(query) {
-
+  isBookPresent = (book) => {
+    const filteredArray = this.state.books.filter((b) => book.id === b.id)
+    if(filteredArray.length > 0) {
+      return true
+    }
+    return false
   }
   updateBook = (book, shelf) => {
     const updatedBooks = this.state.books
-    const index = updatedBooks.indexOf(book)
-    if(index >=0 ) {
-       updatedBooks[index].shelf = shelf
+    if(this.isBookPresent(book)) {
+       updatedBooks.map((b) => {
+          if(b.id === book.id) {
+            b.shelf = shelf
+          }
+          return b
+       })
     } else {
         book.shelf = shelf
         updatedBooks.push(book)
