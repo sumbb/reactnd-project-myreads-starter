@@ -39,8 +39,15 @@ class SearchBook extends Component {
     updateQuery = (inputQuery) => {
       this.setState({
         query : inputQuery
-      }, () => this.updateBooksByQuery())
+      }, () => {
+         this.updateBooksByQuery()
+      })
 
+    }
+    componentDidUpdate() {
+      if(this.state.query === '' && this.state.searchBooks.length !== 0) {
+        this.updateSearchBooks([])
+      }
     }
     render() {
         return <div className="search-books">
